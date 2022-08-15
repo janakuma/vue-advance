@@ -42,10 +42,10 @@ export default createStore ({
                     error => { console.log(error); }
                 );
         },
-        FETCH_ASK(context) {
+        FETCH_ASK({ commit }) {
             fetchAskList()
-                .then(response => {
-                    context.commit('SET_ASK', response.data);
+                .then( ({ data }) => {
+                    commit('SET_ASK', data);
                 })
                 .catch(
                     error => { console.log(error); }

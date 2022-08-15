@@ -1,26 +1,37 @@
 <template>
-    <div>news</div>
+    <h3>news</h3>
     <ul>
-        <li v-for="user in this.$store.state.news" :key="user.id">
-            {{ user.title }}
+        <li v-for="item in $store.state.news" :key="item.id">
+            <a :href="item.url">{{ item.title }}</a>
+            <small>{{ item.time_ago }} by {{ item.user }}</small>
         </li>
     </ul>
 </template>
 
 <script>
 
+import { mapGetters } from 'vuex';
+
 export default {
+    // created() {
+    //     this.$store.dispatch('FETCH_NEWS');
+    //     fetchNewsList()
+    //         .then(
+    //             (response) => {
+    //                 this.items = response.data
+    //             }
+    //         )
+    //         .catch((error) => {
+    //             console.log(error);
+    //         })
+    // },
+    computed: {
+        ...mapGetters([
+            'fetchedNews'
+        ])
+    },
     created() {
         this.$store.dispatch('FETCH_NEWS');
-        // fetchNewsList()
-        //     .then(
-        //         (response) => {
-        //             this.users = response.data
-        //         }
-        //     )
-        //     .catch((error) => {
-        //         console.log(error);
-        //     })
     }
 }
 </script>

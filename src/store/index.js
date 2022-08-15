@@ -7,6 +7,11 @@ export default createStore ({
         jobs: [],
         ask:[],
     },
+    getters: {
+        fetchedAsk(state) {
+            return state.ask;
+        }
+    },
     mutations: {
         //첫 번째 인자로 state를 받는다.
         //response.data가 news로 넘어왔음

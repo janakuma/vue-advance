@@ -3,7 +3,7 @@
     <ul>
         <li v-for="ask in fetchedAsk" :key="ask.id">
             <a :href="ask.url">{{ ask.title }}</a>
-            <small>{{ ask.time_ago }} by {{ ask.user }}</small>
+            <small>{{ ask.time_ago }} by <router-link :to="`/item/${ask.id}`">{{ ask.user }}</router-link></small>
         </li>
     </ul>
 </template>

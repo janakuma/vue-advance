@@ -31,13 +31,16 @@ export default {
                 error => { console.log(error); }
             );
     },
-    FETCH_USER({ commit }, name) {
-        fetchUserInfo(name)
+    FETCH_USER({ commit }, itemid) {
+        fetchUserInfo(itemid)
             .then(({ data }) => {
-                commit('SET_USER', data)
+                commit('SET_ITEM', data)
             })
             .catch(
                 (error) => console.log(error)
             )
+    },
+    FETCH_ITEM() {
+
     }
 }
